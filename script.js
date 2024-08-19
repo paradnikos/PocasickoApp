@@ -17,6 +17,13 @@ class PocasickoApp {
         document.getElementById('searchButton').addEventListener('click', () => this.getWeather());     //udalost na searchButton vyvola metodu getWeather
     }
 
+    cityFromJson() {                                 //metoda nacteni mest z json
+        fetch('city.list.json')                      // pozadavek na json
+            .then(response => response.json())       // prevod na JSON
+            .then(data => {
+                this.places = data;                  // ulozi do pole places
+            });
+    }
   
 
     getWeather() {
@@ -32,6 +39,7 @@ class PocasickoApp {
        
 
         fetch(currentWeatherUrl)                 //pozadavek na API
+        .then(response => response.json())       // prevod na JSON
         .then(data => this.displayWeather(data));  //zavola metodu
 
          
@@ -60,7 +68,7 @@ class PocasickoApp {
             this.weatherInfoDiv.innerHTML = weatherHtml;                  // zobrazeni obrazku
         }
     }   
-
+     
 
 }
 
