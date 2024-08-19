@@ -213,3 +213,11 @@ body {
     }
 }
 
+@media (max-width: 700px) {
+    .bar {
+        display: grid;
+        justify-content: center;
+    }
+
+}
+
