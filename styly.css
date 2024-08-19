@@ -147,3 +147,37 @@ body {
 .forecastList li img {
     width: 200px;
 }
+
+/********/
+/*forecastTable*/
+/********/
+
+#forecastTable h3 {
+    text-align: left;
+    color: white;
+    border-bottom: 1px solid white;
+    margin:0 10px;
+   
+}
+
+.fiveDaysTable {
+    width: 95%;
+    color: white;
+    border-collapse: collapse;
+    text-align: center;
+    margin:0 10px;
+}
+
+.fiveDaysTable td {
+    font-weight: 200;
+    font-size: 1.1rem;   
+    letter-spacing: 0.5px;
+    width: 25%;
+}
+
+.fiveDaysTable .align-left {
+    text-align: left;
+}
+.fiveDaysTable .align-center {
+    text-align: center;
+}
