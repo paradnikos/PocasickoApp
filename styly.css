@@ -235,7 +235,7 @@ body {
     }
 
     .forecastList li img {
-        width: 200px;
+        width: 100px;
     }
 
     #weatherContainer {
@@ -248,4 +248,10 @@ body {
         width: 200px;   
     }
 } 
+
+@media (max-width: 375px) {
+    body {
+        height: 120vh }
+
+}
 
