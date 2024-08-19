@@ -12,8 +12,6 @@ class PocasickoApp {
         this.weatherInfoDiv = document.getElementById('weather-info');   //zobrazeni obrazku pocasi
         this.forecastDiv = document.getElementById('forecastTable');     // zobrazeni tabulky predpovedi
 
-     
-
         document.getElementById('searchButton').addEventListener('click', () => this.getWeather());     //udalost na searchButton vyvola metodu getWeather
     }
 
@@ -75,10 +73,45 @@ class PocasickoApp {
     }   
 
     displayForecast(data)  {                          // metoda na predpoved
+        this.forecastDiv.innerHTML = '';              // vymazani hodnoty
 
+        if (data.cod === '404') {                     // kontrola chyby 
+            this.forecastDiv.innerHTML = `<p>${data.message}</p>`;     //upozorneni city not found
+        } else {
+            const forecastList = data.list;
+            const locale = navigator.language;                         // ziskani aktualniho jazyka prohlizece
+            const isMobile = window.innerWidth < 700;                  // jiny format datumu pri zadani pod 700px
+            const dateFormatter = new Intl.DateTimeFormat(locale, {    //format data na zaklade jazky a isMobile
+                weekday: isMobile ? 'short' : 'long',
+                month: isMobile ? 'short' : 'long',
+                day: 'numeric'
+            });
+            let forecastHTML = '<h3>5denní předpověď</h3>';          //nadpis tabulky
+
+            for (let i = 0; i < forecastList.length; i += 8) {
+                const forecast = forecastList[i];                    // zobrazeni aktualni predpovedi     
+                const date = new Date(forecast.dt * 1000);              // UNIX
+                const temp = Math.round(forecast.main.temp - 273.15);   // kelviny na stupne
+                const description = forecast.weather[0].description;    // popis pocasi
+                const iconCode = forecast.weather[0].icon;              // kod obrazki predpovedi
+                const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;  //obrazek ikony
+
+                forecastHTML += `                                       
+                    <table class="fiveDaysTable">
+                        <tr>
+                            <td class="align-left">${dateFormatter.format(date)}</td>
+                            <td class="align-center">${temp}°</td>
+                            <td class="align-center"><img src="${iconUrl}" alt="${description}"></td>
+                            <td class="align-left">${description}</td>
+                        </tr>
+                    </table>
+                `;                                                       // kod pro zobrazeni tabulky 
+            }
+
+            this.forecastDiv.innerHTML = forecastHTML;                  // zobrazeni tabulky v html
+
+        }
     }
-
-
 }
 
 
