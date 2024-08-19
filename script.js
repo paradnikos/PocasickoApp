@@ -36,11 +36,16 @@ class PocasickoApp {
         this.cityInput.value = '';                 // vymazani hodnoty
 
         const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;       //aktualni pocasi
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.apiKey}`;            // url na predpoved
        
 
         fetch(currentWeatherUrl)                 //pozadavek na API
         .then(response => response.json())       // prevod na JSON
         .then(data => this.displayWeather(data));  //zavola metodu
+
+        fetch(forecastUrl)                           // pozadave API na predpoved
+        .then(response => response.json())
+        .then(data => this.displayForecast(data));   
 
          
     }
@@ -68,7 +73,11 @@ class PocasickoApp {
             this.weatherInfoDiv.innerHTML = weatherHtml;                  // zobrazeni obrazku
         }
     }   
-     
+
+    displayForecast(data)  {                          // metoda na predpoved
+
+    }
+
 
 }
 
