@@ -242,3 +242,10 @@ body {
         padding: 0px;
     }
 }
+
+@media (max-width: 500px) {
+    .bar input {
+        width: 200px;   
+    }
+} 
+
