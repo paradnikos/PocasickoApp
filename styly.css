@@ -83,6 +83,10 @@ body {
     gap: 10px;
 }
 
+.input i {
+    display: none;
+}
+
 .input button {
     padding: 5px 15px; 
     font-size: 1rem;
@@ -181,3 +185,31 @@ body {
 .fiveDaysTable .align-center {
     text-align: center;
 }
+
+
+/********/
+/*RESPONSIVE*/
+/********/
+
+
+@media (max-width: 800px) {
+    .buttonText {
+        display: none;
+    }
+
+    .input i {
+        display: inline-block;
+    }
+
+    .input button {
+        padding: 5px 5px; 
+        cursor: pointer;
+        color: white;
+        background-color: #856362;
+        border-radius: 15px;
+        width: 50px;
+        height: 44px;
+        border: none;
+    }
+}
+
