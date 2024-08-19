@@ -3,6 +3,7 @@ class PocasickoApp {
         this.apiKey  = apiKey;         // APIklic
         this.places = [];              //prazdne pole pro ulozeni mest
         this.initialize();             //metoda pro pridani udalosti
+        this.cityFromJson();           //nacteni mest 
     }
 
     initialize() {                                                       
@@ -11,9 +12,13 @@ class PocasickoApp {
         this.tempDivInfo = document.getElementById('temp-div');   // zobrazeni teploty
         this.weatherInfoDiv = document.getElementById('weather-info');   //zobrazeni obrazku pocasi
         this.forecastDiv = document.getElementById('forecastTable');     // zobrazeni tabulky predpovedi
+        this.suggestionsDiv = document.getElementById('suggestions');
 
+        this.cityInput.addEventListener('input', () => this.showSuggestions());
         document.getElementById('searchButton').addEventListener('click', () => this.getWeather());     //udalost na searchButton vyvola metodu getWeather
     }
+
+    
 
     cityFromJson() {                                 //metoda nacteni mest z json
         fetch('city.list.json')                      // pozadavek na json
@@ -110,6 +115,25 @@ class PocasickoApp {
 
             this.forecastDiv.innerHTML = forecastHTML;                  // zobrazeni tabulky v html
 
+        }
+    }
+
+    showSuggestions() {                                                //metoda naseptavace
+        const filter = this.cityInput.value.toLowerCase();             // ziskani a prevod na mala pismena
+        this.suggestionsDiv.innerHTML = '';                            // vymazani hodnoty
+
+        if (filter) {
+            const filteredPlaces = this.places.filter(place => place.name.toLowerCase().includes(filter)); //filtr mest podle vstupu
+
+            filteredPlaces.forEach(place => {
+                const suggestion = document.createElement('div');     // vytvoreni divu
+                suggestion.textContent = place.name;                  // textovy obsah
+                suggestion.onclick = () => {                          // udalost kliknuti
+                    this.cityInput.value = place.name;                // vybrane mesto
+                    this.suggestionsDiv.innerHTML = '';               // vymazani hodnoty
+                };
+                this.suggestionsDiv.appendChild(suggestion);          //prida navrh do seznamu
+            });
         }
     }
 }

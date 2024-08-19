@@ -104,6 +104,31 @@ body {
     color: #FFFAFF;
 }
 
+.inputCity {
+    display: grid;
+    gap: 20px;  
+}
+
+#suggestions {
+    border: 1px solid #2C2F4E;
+    background: #3B3F68;
+    border-radius: 15px;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    width: 312px;
+    z-index: 10;
+    margin-top: 45px;
+}
+
+#suggestions div {
+    padding: 8px;
+    cursor: pointer;
+    color: #FFFAFF;
+    text-align: left;
+    position: left;
+    font-size: 20px;   
+}
 
 /********/
 /*forecastList*/
@@ -246,6 +271,10 @@ body {
 @media (max-width: 500px) {
     .bar input {
         width: 200px;   
+    }
+    
+    #suggestions {      
+        width: 212px;
     }
 } 
 
