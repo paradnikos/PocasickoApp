@@ -221,3 +221,24 @@ body {
 
 }
 
+@media (max-width: 600px) {
+    .forecastList {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    .forecastList li:nth-child(3) {
+        grid-column: 1; 
+        grid-row: 3; 
+    }
+
+    .forecastList li img {
+        width: 200px;
+    }
+
+    #weatherContainer {
+        padding: 0px;
+    }
+}
