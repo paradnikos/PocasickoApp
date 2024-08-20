@@ -43,7 +43,7 @@ body {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
     gap: 10px; 
 }
@@ -259,6 +259,10 @@ body {
         grid-row: 3; 
     }
 
+    .forecastList h2 {
+        padding-top: 15px;
+    }
+
     .forecastList li img {
         width: 100px;
     }
@@ -272,7 +276,7 @@ body {
     .bar input {
         width: 200px;   
     }
-    
+
     #suggestions {      
         width: 212px;
     }
