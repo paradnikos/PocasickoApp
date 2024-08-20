@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 body {
@@ -97,6 +98,7 @@ body {
     width: 100px;
     height: 44px;
     border: none;
+    font-weight: 600;
 }
 
 .input button:hover {
