@@ -138,5 +138,4 @@ class PocasickoApp {
     }
 }
 
-
 const app = new PocasickoApp('64f60853740a1ee3ba20d0fb595c97d5');  // APIklic pro PocasickoAPP
